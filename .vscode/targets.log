@@ -8,7 +8,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This program built for i386-apple-darwin11.3.0
  
 
-# Make data base, printed on Wed Aug 10 22:24:57 2022
+# Make data base, printed on Wed Aug 10 23:23:47 2022
 
 # Variables
 
@@ -16,11 +16,16 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
+# environment
+ELECTRON_NO_ATTACH_CONSOLE = 1
+# environment
+LC_CTYPE = UTF-8
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # automatic
+ 
 @F = $(notdir $@)
 # makefile
 CURDIR := /Users/rishikesh.vishwakarma/Projects/grpc-go-course
@@ -47,7 +52,7 @@ P9K_SSH = 0
 # makefile (from `Makefile', line 30)
 PACKAGE = $(shell head -1 go.mod | awk '{print $$2}')
 # environment
-VSCODE_CWD = /
+VSCODE_CWD = /Users/rishikesh.vishwakarma/Projects
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
@@ -60,6 +65,8 @@ BIN_DIR = bin
 GOPATH = /Users/rishikesh.vishwakarma/go
 # makefile (from `Makefile', line 31)
 CHECK_DIR_CMD = test -d $@ || (echo "\033[31mDirectory $@ doesn't exist\033[0m" && false)
+# environment
+LaunchInstanceID = 16D632EF-7E68-4729-877D-6C4F0DECF6B5
 # makefile (from `Makefile', line 32)
 HELP_CMD = grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 # environment
@@ -95,6 +102,8 @@ HOME = /Users/rishikesh.vishwakarma
 # default
 MAKEFILEPATH := /Applications/Xcode.app/Contents/Developer/Makefiles
 # environment
+VSCODE_CLI = 1
+# environment
 VSCODE_CODE_CACHE_PATH = /Users/rishikesh.vishwakarma/Library/Application Support/Code - Insiders/CachedData/dced70bbf36d3c53c08e791da1791ac7fc42519b
 # environment
 LOGNAME = rishikesh.vishwakarma
@@ -115,7 +124,7 @@ MAKE = $(MAKE_COMMAND)
 # default
 MAKECMDGOALS := all
 # environment
-SHLVL = 1
+SHLVL = 3
 # environment
 NIX_PATH = /Users/rishikesh.vishwakarma/.nix-defexpr/channels
 # environment
@@ -126,6 +135,8 @@ MAKE_VERSION := 3.81
 USER = rishikesh.vishwakarma
 # makefile (from `Makefile', line 39)
 .DEFAULT_GOAL := help
+# environment
+TERM_SESSION_ID = 04BEE1B7-8B13-4702-808D-4B2D67D7CA80
 # makefile (from `Makefile', line 21)
 UNAME := Darwin
 # environment
@@ -134,6 +145,8 @@ LESS = -R
 %D = $(patsubst %/,%,$(dir $%))
 # default
 MAKE_COMMAND := /Applications/Xcode.app/Contents/Developer/usr/bin/make
+# environment
+TERM_PROGRAM = Apple_Terminal
 # default
 .VARIABLES := 
 # environment
@@ -153,7 +166,9 @@ MFLAGS = -Rrqp
 # automatic
 *D = $(patsubst %/,%,$(dir $*))
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCodeInsiders.8627903.8627909
+TERM_PROGRAM_VERSION = 445
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCodeInsiders.8627903.8627909.58507990-03A0-4234-B9D7-89F13C46F815
 # environment
 HOMEBREW_PREFIX = /opt/homebrew
 # automatic
@@ -176,6 +191,10 @@ MAKEFILES :=
 PAGER = less
 # environment
 LC_ALL = C
+# environment
+SECURITYSESSIONID = 186b4
+# environment
+P9K_TTY = old
 # automatic
 ^F = $(notdir $^)
 # default
@@ -191,9 +210,13 @@ RM_F_CMD = rm -f
 # environment
 LANG = C
 # environment
-VSCODE_PID = 46187
+TERM = xterm-256color
+# environment
+_P9K_TTY = /dev/ttys002
+# environment
+VSCODE_PID = 63721
 # variable set hash-table stats:
-# Load=90/1024=9%, Rehash=0, Collisions=5/143=3%
+# Load=101/1024=10%, Rehash=0, Collisions=5/154=3%
 
 # Pattern-specific Variable Values
 
@@ -201,9 +224,9 @@ VSCODE_PID = 46187
 
 # Directories
 
-# . (device 16777231, inode 8085535): 10 files, no impossibilities.
+# . (device 16777231, inode 8085535): 13 files, no impossibilities.
 
-# 10 files, no impossibilities in 1 directories.
+# 13 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -292,6 +315,7 @@ clean: clean_greet clean_calculator clean_blog
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
+ 
 #  commands to execute (from `Makefile', line 59):
 	${RM_F_CMD} ssl/*.crt
 	${RM_F_CMD} ssl/*.csr
@@ -302,7 +326,6 @@ clean: clean_greet clean_calculator clean_blog
 
 clean_calculator:
 #  Implicit rule search has not been done.
- 
 #  Modification time never checked.
 #  File has not been updated.
 #  commands to execute (from `Makefile', line 69):
@@ -387,6 +410,6 @@ blog:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Wed Aug 10 22:24:57 2022
+# Finished Make data base on Wed Aug 10 23:23:47 2022
 
  
