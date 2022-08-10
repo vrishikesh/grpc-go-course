@@ -2,31 +2,34 @@ package main
 
 import (
 	"context"
-	pb "grpc-go-course/calculator/proto"
 	"io"
 	"log"
+
+	pb "grpc-go-course/calculator/proto"
 )
 
 func doPrimes(c pb.CalculatorServiceClient) {
-	log.Printf("doPrimes function was invoked")
+	log.Println("doPrimes was invoked")
+	req := &pb.PrimeRequest{
+		Number: 12390392840,
+	}
+	stream, err := c.Primes(context.Background(), req)
 
-	stream, err := c.Primes(context.Background(), &pb.PrimesRequest{
-		N: 120,
-	})
 	if err != nil {
-		log.Fatalf("error while calling GreetManyTimes: %v", err)
+		log.Fatalf("error while calling Primes: %v\n", err)
 	}
 
 	for {
-		msg, err := stream.Recv()
+		res, err := stream.Recv()
+
 		if err == io.EOF {
 			break
 		}
 
 		if err != nil {
-			log.Fatalf("error while reading the stream: %v", err)
+			log.Fatalf("Something happened: %v\n", err)
 		}
 
-		log.Printf("Primes: %d", msg.Result)
+		log.Println(res.Result)
 	}
 }

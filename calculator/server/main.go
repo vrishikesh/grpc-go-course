@@ -1,32 +1,36 @@
+//go:build !test
+// +build !test
+
 package main
 
 import (
 	"log"
 	"net"
 
-	"google.golang.org/grpc"
-
 	pb "grpc-go-course/calculator/proto"
+
+	"google.golang.org/grpc"
+	"google.golang.org/grpc/reflection"
 )
 
-var addr string = "0.0.0.0:50052"
-
-type Server struct {
-	pb.CalculatorServiceServer
-}
+var addr string = "0.0.0.0:50051"
 
 func main() {
 	lis, err := net.Listen("tcp", addr)
+
 	if err != nil {
-		log.Fatalf("could listen to %s: %v", addr, err)
+		log.Fatalf("Failed to listen: %v\n", err)
 	}
 
-	log.Printf("listening on %s", addr)
+	log.Printf("Listening at %s\n", addr)
 
-	s := grpc.NewServer()
+	opts := []grpc.ServerOption{}
+
+	s := grpc.NewServer(opts...)
 	pb.RegisterCalculatorServiceServer(s, &Server{})
+	reflection.Register(s)
 
 	if err := s.Serve(lis); err != nil {
-		log.Fatalf("could not serve: %v", err)
+		log.Fatalf("Failed to serve: %v\n", err)
 	}
 }

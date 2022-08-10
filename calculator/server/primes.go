@@ -6,20 +6,21 @@ import (
 	pb "grpc-go-course/calculator/proto"
 )
 
-func (*Server) Primes(in *pb.PrimesRequest, stream pb.CalculatorService_PrimesServer) error {
-	log.Printf("Primes function invoked with %v", in)
+func (*Server) Primes(in *pb.PrimeRequest, stream pb.CalculatorService_PrimesServer) error {
+	log.Printf("Primes was invoked with %v\n", in)
 
-	var N int32 = in.N
-	var k int32 = 2
-	for N > 1 {
-		if N%k == 0 {
-			log.Printf("factor found %d", k)
-			stream.Send(&pb.PrimesResponse{
-				Result: k,
+	number := in.Number
+	divisor := int64(2)
+
+	for number > 1 {
+		if number%divisor == 0 {
+			stream.Send(&pb.PrimeResponse{
+				Result: divisor,
 			})
-			N = N / k
+
+			number /= divisor
 		} else {
-			k = k + 1
+			divisor++
 		}
 	}
 
