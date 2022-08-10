@@ -2,33 +2,36 @@ package main
 
 import (
 	"context"
-	pb "grpc-go-course/greet/proto"
 	"io"
 	"log"
+
+	pb "github.com/Clement-Jean/grpc-go-course/greet/proto"
 )
 
 func doGreetManyTimes(c pb.GreetServiceClient) {
-	log.Printf("doGreetManyTimes function was invoked")
+	log.Println("doGreetManyTimes was invoked")
 
 	req := &pb.GreetRequest{
-		FirstName: "Rishi",
+		FirstName: "Clement",
 	}
 
 	stream, err := c.GreetManyTimes(context.Background(), req)
+
 	if err != nil {
-		log.Fatalf("error while calling GreetManyTimes: %v", err)
+		log.Fatalf("Error while calling GreetManyTimes: %v\n", err)
 	}
 
 	for {
 		msg, err := stream.Recv()
+
 		if err == io.EOF {
 			break
 		}
 
 		if err != nil {
-			log.Fatalf("error while reading the stream: %v", err)
+			log.Fatalf("Error while reading stream: %v\n", err)
 		}
 
-		log.Printf("GreetManyTimes: %s", msg.Result)
+		log.Printf("GreetManyTimes: %s\n", msg.Result)
 	}
 }
