@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package calculator;
+
+option go_package = "grpc-go-course/calculator/proto";
+
+message SumRequest {
+  repeated int32 numbers = 1;
+}
+
+message SumResponse {
+  int32 result = 1;
+}
